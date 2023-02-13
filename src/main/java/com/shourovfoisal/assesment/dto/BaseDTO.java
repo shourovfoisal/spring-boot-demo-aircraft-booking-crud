@@ -1,20 +1,11 @@
-package com.shourovfoisal.assesment.entity;
+package com.shourovfoisal.assesment.dto;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@MappedSuperclass
-public abstract class BaseEntity {
+public class BaseDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
-
-    @Column(name = "created_time")
     private LocalDateTime createdTime;
-
-    @Column(name = "updated_time")
     private LocalDateTime updatedTime;
 
     public Integer getId() {
