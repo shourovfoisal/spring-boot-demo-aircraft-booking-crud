@@ -3,9 +3,7 @@ package com.shourovfoisal.assesment.service.passenger;
 import com.shourovfoisal.assesment.dao.passenger.PassengerDAO;
 import com.shourovfoisal.assesment.dto.passenger.PassengerDTO;
 import com.shourovfoisal.assesment.entity.passenger.Passenger;
-import com.shourovfoisal.assesment.mapper.PassengerRowMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.shourovfoisal.assesment.mapper.passenger.PassengerRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -15,8 +13,6 @@ import java.util.List;
 
 @Service
 public class PassengerService {
-
-    private static final Logger logger = LoggerFactory.getLogger(PassengerService.class);
 
     @Autowired
     private JdbcTemplate template;
@@ -41,6 +37,4 @@ public class PassengerService {
     public void deletePassenger(Passenger passenger) {
         passengerDAO.delete(passenger);
     }
-    
-    
 }

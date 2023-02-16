@@ -11,6 +11,7 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class AircraftManager {
@@ -31,7 +32,7 @@ public class AircraftManager {
 
         String conditions = "";
         List<Object> args = new LinkedList<>();
-        List<Integer> argTypes = new ArrayList<>();
+        List<Integer> argTypes = new LinkedList<>();
 
         if(aircraftTypeId != null) {
             conditions += " AND at.id=? ";
@@ -51,7 +52,7 @@ public class AircraftManager {
 
         String conditions = "";
         List<Object> parameters = new LinkedList<>();
-        List<Integer> argTypes = new ArrayList<>();
+        List<Integer> argTypes = new LinkedList<>();
 
         conditions += " AND a.id=? ";
         parameters.add(id);
@@ -67,8 +68,11 @@ public class AircraftManager {
 
     public AircraftDTO updateAircraft(Aircraft aircraft, Aircraft payload) {
 
-        aircraft.setName(payload.getName());
-        aircraft.setAircraftType(payload.getAircraftType());
+        if(payload.getName() != null)
+            aircraft.setName(payload.getName());
+
+        if(!Objects.isNull(payload.getAircraftType()) && payload.getAircraftType().getId() != null)
+            aircraft.setAircraftType(payload.getAircraftType());
 
         Aircraft updatedAircraft =  aircraftService.updateAircraft(aircraft);
         return getAircraftById(updatedAircraft.getId());

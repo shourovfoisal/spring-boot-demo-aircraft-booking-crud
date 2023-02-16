@@ -1,4 +1,4 @@
-package com.shourovfoisal.assesment.mapper;
+package com.shourovfoisal.assesment.mapper.passenger;
 
 import com.shourovfoisal.assesment.dto.gender.GenderDTO;
 import com.shourovfoisal.assesment.dto.passenger.PassengerDTO;

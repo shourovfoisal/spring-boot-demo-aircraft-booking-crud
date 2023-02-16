@@ -3,7 +3,7 @@ package com.shourovfoisal.assesment.service.aircraft;
 import com.shourovfoisal.assesment.dao.aircraft.AircraftDAO;
 import com.shourovfoisal.assesment.dto.aircraft.AircraftDTO;
 import com.shourovfoisal.assesment.entity.aircraft.Aircraft;
-import com.shourovfoisal.assesment.mapper.AircraftRowMapper;
+import com.shourovfoisal.assesment.mapper.aircraft.AircraftRowMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

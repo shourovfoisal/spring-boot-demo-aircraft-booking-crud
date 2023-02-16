@@ -1,4 +1,4 @@
-package com.shourovfoisal.assesment.mapper;
+package com.shourovfoisal.assesment.mapper.aircraft;
 
 import com.shourovfoisal.assesment.dto.aircraft.AircraftDTO;
 import com.shourovfoisal.assesment.dto.aircraft.AircraftTypeDTO;

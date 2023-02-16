@@ -13,6 +13,7 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class PassengerManager {
@@ -34,7 +35,7 @@ public class PassengerManager {
 
         String conditions = "";
         List<Object> args = new LinkedList<>();
-        List<Integer> argTypes = new ArrayList<>();
+        List<Integer> argTypes = new LinkedList<>();
 
         if(name != null) {
             conditions += " AND p.name LIKE ?";
@@ -61,7 +62,7 @@ public class PassengerManager {
 
         String conditions = "";
         List<Object> parameters = new LinkedList<>();
-        List<Integer> argTypes = new ArrayList<>();
+        List<Integer> argTypes = new LinkedList<>();
 
         conditions += " AND p.id=? ";
         parameters.add(id);
@@ -77,9 +78,14 @@ public class PassengerManager {
 
     public PassengerDTO updatePassenger(Passenger passenger, Passenger payload) {
 
-        passenger.setName(payload.getName());
-        passenger.setAge(payload.getAge());
-        passenger.setGender(payload.getGender());
+        if(payload.getName() != null)
+            passenger.setName(payload.getName());
+
+        if(payload.getAge() != 0)
+            passenger.setAge(payload.getAge());
+
+        if(!Objects.isNull(payload.getGender()) && payload.getGender().getId() != null)
+            passenger.setGender(payload.getGender());
 
         Passenger updatedPassenger =  passengerService.updatePassenger(passenger);
         return getPassengerById(updatedPassenger.getId());

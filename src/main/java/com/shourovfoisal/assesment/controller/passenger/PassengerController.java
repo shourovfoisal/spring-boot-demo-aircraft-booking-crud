@@ -45,7 +45,7 @@ public class PassengerController {
     // Update
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public PassengerDTO updatePassenger(@RequestBody Passenger payload,
-                                      @PathVariable(value = "id") Integer id ) {
+                                        @PathVariable(value = "id") Integer id ) {
 
         Passenger aircraft = passengerDAO.findById(id).get();
         return passengerManager.updatePassenger(aircraft, payload);
