@@ -21,7 +21,7 @@ public class AircraftManager {
     @Autowired
     private QueryBuilder queryBuilder;
 
-    // Create
+
     public AircraftDTO createAircraft(Aircraft payload) {
         Aircraft savedAircraft = aircraftService.createAircraft(payload);
         return getAircraftById(savedAircraft.getId());

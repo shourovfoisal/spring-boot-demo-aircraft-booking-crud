@@ -13,12 +13,8 @@ public class AircraftTypeService {
     @Autowired
     private AircraftTypeDAO aircraftTypeDAO;
 
-    // Create
-    public AircraftType createAircraftType(AircraftType payload) {
+    public void createAircraftType(AircraftType payload) {
         payload.setCreatedTime(LocalDateTime.now());
-        AircraftType savedAircraftType = aircraftTypeDAO.save(payload);
-        return savedAircraftType;
+        aircraftTypeDAO.save(payload);
     }
-
-
 }

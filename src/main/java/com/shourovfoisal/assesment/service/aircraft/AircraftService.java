@@ -24,7 +24,6 @@ public class AircraftService {
     @Autowired
     private AircraftDAO aircraftDAO;
 
-    // Create
     public Aircraft createAircraft(Aircraft payload) {
         payload.setCreatedTime(LocalDateTime.now());
         return aircraftDAO.save(payload);

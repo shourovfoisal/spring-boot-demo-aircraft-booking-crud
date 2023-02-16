@@ -12,4 +12,10 @@ public class QueryBuilder {
         return query;
     }
 
+    public String getQueryParamOfPassenger(String conditions) {
+        String query = "SELECT * FROM passenger p \n" +
+                "LEFT JOIN gender g ON p.gender_id=g.id \n"+
+                "WHERE 1" + conditions;
+        return query;
+    }
 }

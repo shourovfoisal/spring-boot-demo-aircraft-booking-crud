@@ -2,8 +2,6 @@ package com.shourovfoisal.assesment.mapper;
 
 import com.shourovfoisal.assesment.dto.aircraft.AircraftDTO;
 import com.shourovfoisal.assesment.dto.aircraft.AircraftTypeDTO;
-import com.shourovfoisal.assesment.entity.aircraft.Aircraft;
-import com.shourovfoisal.assesment.entity.aircraft.AircraftType;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
