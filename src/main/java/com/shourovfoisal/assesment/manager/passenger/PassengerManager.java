@@ -30,11 +30,18 @@ public class PassengerManager {
         return getPassengerById(savedPassenger.getId());
     }
 
-    public List<PassengerDTO> getPassengerList(Integer genderId) {
+    public List<PassengerDTO> getPassengerList(String name, Integer genderId) {
 
         String conditions = "";
         List<Object> args = new LinkedList<>();
         List<Integer> argTypes = new ArrayList<>();
+
+        if(name != null) {
+            conditions += " AND p.name LIKE ?";
+            name = "%"+name+"%";
+            args.add(name);
+            argTypes.add(Types.VARCHAR);
+        }
 
         if(genderId != null) {
             conditions += " AND g.id=? ";
@@ -42,6 +49,7 @@ public class PassengerManager {
             argTypes.add(Types.INTEGER);
         }
 
+        logger.warn("Name is " + name);
         logger.warn("Gender id is " + genderId);
 
         String query = queryBuilder.getQueryParamOfPassenger(conditions);

@@ -29,9 +29,10 @@ public class PassengerController {
 
     // Get List
     @RequestMapping(method = RequestMethod.GET)
-    public List<PassengerDTO> getPassengerList(@RequestParam(value = "gender_id", required = false) Integer genderId) {
+    public List<PassengerDTO> getPassengerList(@RequestParam(value = "name", required = false) String name,
+                                               @RequestParam(value = "gender_id", required = false) Integer genderId) {
 
-        return passengerManager.getPassengerList(genderId);
+        return passengerManager.getPassengerList(name, genderId);
     }
 
     // Get Single
