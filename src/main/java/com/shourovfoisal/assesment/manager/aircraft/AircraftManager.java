@@ -7,9 +7,10 @@ import com.shourovfoisal.assesment.service.aircraft.AircraftService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Types;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class AircraftManager {
@@ -26,16 +27,21 @@ public class AircraftManager {
         return getAircraftById(savedAircraft.getId());
     }
 
-    public List<AircraftDTO> getAircraftList() {
+    public List<AircraftDTO> getAircraftList(Integer aircraftTypeId) {
 
         String conditions = "";
-        List<Object> parameters = new LinkedList<>();
+        List<Object> args = new LinkedList<>();
+        List<Integer> argTypes = new ArrayList<>();
 
-        int[] argTypes = { };
+        if(aircraftTypeId != null) {
+            conditions += " AND at.id=? ";
+            args.add(aircraftTypeId);
+            argTypes.add(Types.INTEGER);
+        }
 
         String query = queryBuilder.getQueryParamOfAircraft(conditions);
 
-        List<AircraftDTO> fetchedAircraft = aircraftService.getAircraftList(query, parameters.toArray(), argTypes);
+        List<AircraftDTO> fetchedAircraft = aircraftService.getAircraftList(query, args.toArray(), argTypes.stream().mapToInt(i -> i).toArray());
 
         return fetchedAircraft;
 
@@ -45,15 +51,15 @@ public class AircraftManager {
 
         String conditions = "";
         List<Object> parameters = new LinkedList<>();
+        List<Integer> argTypes = new ArrayList<>();
 
         conditions += " AND a.id=? ";
         parameters.add(id);
-
-        int[] argTypes = { java.sql.Types.INTEGER };
+        argTypes.add(Types.INTEGER);
 
         String query = queryBuilder.getQueryParamOfAircraft(conditions);
 
-        List<AircraftDTO> fetchedAircrafts = aircraftService.getAircraftList(query, parameters.toArray(), argTypes);
+        List<AircraftDTO> fetchedAircrafts = aircraftService.getAircraftList(query, parameters.toArray(), argTypes.stream().mapToInt(i -> i).toArray());
 
         return fetchedAircrafts.get(0);
     }

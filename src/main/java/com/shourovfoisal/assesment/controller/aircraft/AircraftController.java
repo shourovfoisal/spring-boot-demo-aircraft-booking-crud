@@ -9,7 +9,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/aircrafts")
@@ -30,9 +29,9 @@ public class AircraftController {
 
     // Get List
     @RequestMapping(method = RequestMethod.GET)
-    public List<AircraftDTO> getAircraftList() {
+    public List<AircraftDTO> getAircraftList(@RequestParam(value = "type_id", required = false) Integer aircraftTypeId) {
 
-        List<AircraftDTO> fetchedAircrafts = aircraftManager.getAircraftList();
+        List<AircraftDTO> fetchedAircrafts = aircraftManager.getAircraftList(aircraftTypeId);
         return fetchedAircrafts;
     }
 
@@ -44,6 +43,7 @@ public class AircraftController {
         return fetchedAircraft;
     }
 
+    // Update
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public AircraftDTO updateAircraft(@RequestBody Aircraft payload,
                                       @PathVariable(value = "id") Integer id ) {
@@ -53,6 +53,7 @@ public class AircraftController {
         return updatedAircraft;
     }
 
+    // Delete
     @RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
     public AircraftDTO updateAircraft(@PathVariable(value = "id") Integer id ) {
 

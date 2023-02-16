@@ -2,9 +2,6 @@ package com.shourovfoisal.assesment.component;
 
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Objects;
-
 @Component
 public class QueryBuilder {
 
