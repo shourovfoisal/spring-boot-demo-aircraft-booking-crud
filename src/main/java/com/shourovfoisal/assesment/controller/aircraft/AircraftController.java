@@ -4,15 +4,21 @@ import com.shourovfoisal.assesment.dao.aircraft.AircraftDAO;
 import com.shourovfoisal.assesment.dto.aircraft.AircraftDTO;
 import com.shourovfoisal.assesment.entity.aircraft.Aircraft;
 import com.shourovfoisal.assesment.manager.aircraft.AircraftManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/aircrafts")
 public class AircraftController {
+
+    private static final Logger logger = LoggerFactory.getLogger(AircraftController.class);
 
     @Autowired
     private AircraftManager aircraftManager;
@@ -44,12 +50,16 @@ public class AircraftController {
     }
 
     // Update
-    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public AircraftDTO updateAircraft(@RequestBody Aircraft payload,
                                       @PathVariable(value = "id") Integer id ) {
 
+        logger.info("Payload is: " + payload);
+        logger.info("Path variable is: " + id);
         Aircraft aircraft = aircraftDAO.findById(id).get();
+        logger.info("Aircraft is: " + aircraft);
         AircraftDTO updatedAircraft = aircraftManager.updateAircraft(aircraft, payload);
+        logger.warn("Updated aircraft: " + updatedAircraft);
         return updatedAircraft;
     }
 
