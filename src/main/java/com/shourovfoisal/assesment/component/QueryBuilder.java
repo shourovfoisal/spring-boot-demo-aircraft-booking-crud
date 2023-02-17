@@ -28,6 +28,13 @@ public class QueryBuilder {
         return query;
     }
 
+    public String getQueryParamOfGender(String conditions) {
+        String query = "SELECT * FROM gender g \n" +
+                "WHERE 1" + conditions + "\n" +
+                "ORDER BY g.id";;
+        return query;
+    }
+
     public String getQueryParamOfReserve(String conditions) {
         String query = "SELECT * FROM reserve r \n" +
                 "LEFT JOIN aircraft a ON r.aircraft_id=a.id \n"+

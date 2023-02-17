@@ -50,9 +50,6 @@ public class PassengerManager {
             argTypes.add(Types.INTEGER);
         }
 
-        logger.warn("Name is " + name);
-        logger.warn("Gender id is " + genderId);
-
         String query = queryBuilder.getQueryParamOfPassenger(conditions);
 
         return passengerService.getPassengerList(query, args.toArray(), argTypes.stream().mapToInt(i -> i).toArray());

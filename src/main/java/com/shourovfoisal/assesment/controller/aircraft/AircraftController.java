@@ -54,12 +54,8 @@ public class AircraftController {
     public AircraftDTO updateAircraft(@RequestBody Aircraft payload,
                                       @PathVariable(value = "id") Integer id ) {
 
-        logger.info("Payload is: " + payload);
-        logger.info("Path variable is: " + id);
         Aircraft aircraft = aircraftDAO.findById(id).get();
-        logger.info("Aircraft is: " + aircraft);
         AircraftDTO updatedAircraft = aircraftManager.updateAircraft(aircraft, payload);
-        logger.warn("Updated aircraft: " + updatedAircraft);
         return updatedAircraft;
     }
 

@@ -1,6 +1,5 @@
 package com.shourovfoisal.assesment.controller.aircraft;
 
-import com.shourovfoisal.assesment.dto.aircraft.AircraftDTO;
 import com.shourovfoisal.assesment.dto.aircraft.AircraftTypeDTO;
 import com.shourovfoisal.assesment.entity.aircraft.AircraftType;
 import com.shourovfoisal.assesment.manager.aircraft.AircraftTypeManager;
